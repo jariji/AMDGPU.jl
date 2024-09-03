@@ -71,8 +71,8 @@ using .ROCmDiscovery
 
 include("utils.jl")
 
-include(joinpath("hsa", "HSA.jl"))
-include(joinpath("hip", "HIP.jl"))
+include("hsa/HSA.jl")
+include("hip/HIP.jl")
 import .HIP: HIPContext, HIPDevice, HIPStream
 export HIPContext, HIPDevice, HIPStream
 
@@ -105,7 +105,7 @@ export sync_workgroup, sync_workgroup_count, sync_workgroup_and, sync_workgroup_
 
 include("compiler/Compiler.jl")
 import .Compiler
-import .Compiler: hipfunction
+import .Compiler: hipfunction, compiler_config
 
 include("tls.jl")
 include("highlevel.jl")
@@ -124,12 +124,12 @@ include("kernels/reverse.jl")
 
 allowscalar(x::Bool) = GPUArrays.allowscalar(x)
 
-include(joinpath("blas", "rocBLAS.jl"))
-include(joinpath("solver", "rocSOLVER.jl"))
-include(joinpath("sparse", "rocSPARSE.jl"))
-include(joinpath("rand", "rocRAND.jl"))
-include(joinpath("fft", "rocFFT.jl"))
-include(joinpath("dnn", "MIOpen.jl"))
+include("blas/rocBLAS.jl")
+include("solver/rocSOLVER.jl")
+include("sparse/rocSPARSE.jl")
+include("rand/rocRAND.jl")
+include("fft/rocFFT.jl")
+include("dnn/MIOpen.jl")
 
 include("random.jl")
 
